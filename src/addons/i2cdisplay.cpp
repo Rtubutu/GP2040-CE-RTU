@@ -1270,7 +1270,7 @@ void I2CDisplayAddon::drawRtuFireflyButtonsA(int startX, int startY, int buttonR
 	obdPreciseEllipse(&obd, startX, startY, buttonRadius, buttonRadius, 1, pressedLeft());
 	obdPreciseEllipse(&obd, startX + buttonMargin, startY, buttonRadius, buttonRadius, 1, pressedDown());
 	obdPreciseEllipse(&obd, startX + (buttonMargin * 1.875), startY + (buttonMargin / 2), buttonRadius, buttonRadius, 1, pressedRight());
-	obdPreciseEllipse(&obd, startX + (buttonMargin * (isInputHistoryEnabled ? 1.875 : 2.25)), startY + buttonMargin * (isInputHistoryEnabled ? 2.225 : 2.6), buttonRadius, buttonRadius, 1, pressedUp());
+	obdPreciseEllipse(&obd, startX + (buttonMargin * (isInputHistoryEnabled ? 2.25 : 2.25)), startY + buttonMargin * (isInputHistoryEnabled ? 2.225 : 2.6), buttonRadius, buttonRadius, 1, pressedUp());
 
 	// Aux buttons
 	obdPreciseEllipse(&obd, startX + (buttonMargin * 1.25), startY + buttonMargin * 2, buttonRadius, buttonRadius, 1, pGamepad->pressedL3());
