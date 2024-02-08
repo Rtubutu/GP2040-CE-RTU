@@ -513,7 +513,7 @@ void I2CDisplayAddon::drawButtonLayoutRight(ButtonLayoutParamsRight& options)
 			case BUTTON_LAYOUT_STICKLESS_14B:
 				drawSticklessButtons14B(startX, startY, buttonRadius, buttonPadding);
 				break;
-			case BUTTON_LAYOUT_RTUFIREFLY:
+			case BUTTON_LAYOUT_RTUFIREFLYB:
 				drawRtuFireflyButtonsB(startX, startY, buttonRadius, buttonPadding);
 				break;		
 		}
