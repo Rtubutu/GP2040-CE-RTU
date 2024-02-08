@@ -37,6 +37,7 @@ const BUTTON_LAYOUTS = [
 	{ label: 'Stickless 13', value: 14 }, // BUTTON_LAYOUT_STICKLESS_13
     { label: 'Stickless 16', value: 15 }, // BUTTON_LAYOUT_STICKLESS_16
     { label: 'Stickless 14', value: 16 }, // BUTTON_LAYOUT_STICKLESS_14
+    { label: 'RTU-FIREFLY', value: 17 }, //  BUTTON_LAYOUT_RTU-FIREFLY
 ];
 
 const BUTTON_LAYOUTS_RIGHT = [
@@ -62,6 +63,7 @@ const BUTTON_LAYOUTS_RIGHT = [
 	{ label: 'Stickless 13', value: 19 }, // BUTTON_LAYOUT_STICKLESS_13B
     { label: 'Stickless 16', value: 20 }, // BUTTON_LAYOUT_STICKLESS_16B
     { label: 'Stickless 14', value: 21 }, // BUTTON_LAYOUT_STICKLESS_14B
+    { label: 'RTU-FIREFLY', value: 22 }, //  BUTTON_LAYOUT_RTU-FIREFLY
 ];
 
 const SPLASH_MODES = [
