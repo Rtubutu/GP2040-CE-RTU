@@ -113,6 +113,7 @@ namespace ConfigLegacy
         BUTTON_LAYOUT_STICKLESS_13,
         BUTTON_LAYOUT_STICKLESS_16,
         BUTTON_LAYOUT_STICKLESS_14,
+        BUTTON_LAYOUT_RTUFIREFLY,
     };
 
     enum ButtonLayoutRight
@@ -139,6 +140,7 @@ namespace ConfigLegacy
         BUTTON_LAYOUT_STICKLESS_13B,
         BUTTON_LAYOUT_STICKLESS_16B,
         BUTTON_LAYOUT_STICKLESS_14B,
+        BUTTON_LAYOUT_RTUFIREFLYB,
     };
 
     enum SplashMode
@@ -562,6 +564,7 @@ static bool isValidButtonLayout(ConfigLegacy::ButtonLayout buttonLayout)
         case BUTTON_LAYOUT_STICKLESS_13:
         case BUTTON_LAYOUT_STICKLESS_16:
         case BUTTON_LAYOUT_STICKLESS_14:
+        case BUTTON_LAYOUT_RTUFIREFLY:
             return true;
     }
     return false;
@@ -593,6 +596,7 @@ static bool isValidButtonLayoutRight(ConfigLegacy::ButtonLayoutRight buttonLayou
         case BUTTON_LAYOUT_STICKLESS_13B:
         case BUTTON_LAYOUT_STICKLESS_16B:        
         case BUTTON_LAYOUT_STICKLESS_14B:
+        case BUTTON_LAYOUT_RTUFIREFLYB:
             return true;
     }
     return false;
