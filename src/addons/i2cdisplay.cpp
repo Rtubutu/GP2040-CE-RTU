@@ -45,6 +45,9 @@ void I2CDisplayAddon::setup() {
 	clearScreen(1);
 	gamepad = Storage::getInstance().GetGamepad();
 	pGamepad = Storage::getInstance().GetProcessedGamepad();
+	const FocusModeOptions& focusModeOptions = Storage::getInstance().getAddonOptions().focusModeOptions;
+	isFocusModeEnabled = focusModeOptions.enabled && focusModeOptions.oledLockEnabled &&
+		isValidPin(focusModeOptions.pin);
 	prevButtonState = 0;
 	displaySaverTimer = options.displaySaverTimeout;
 	displaySaverTimeout = displaySaverTimer;
@@ -64,20 +67,33 @@ bool I2CDisplayAddon::isDisplayPowerOff()
 		if (!displayIsPowerOn) setDisplayPower(1);
 	}
 
-	if (!displaySaverTimeout) return false;
+	if (!displaySaverTimeout && !isFocusModeEnabled) return false;
 
 	float diffTime = getMillis() - prevMillis;
 	displaySaverTimer -= diffTime;
-	if (!!displaySaverTimeout && (gamepad->state.buttons || gamepad->state.dpad) ) {
+	if (!!displaySaverTimeout && (gamepad->state.buttons || gamepad->state.dpad) && !focusModePrevState) {
 		displaySaverTimer = displaySaverTimeout;
 		setDisplayPower(1);
 	} else if (!!displaySaverTimeout && displaySaverTimer <= 0) {
 		setDisplayPower(0);
 	}
 
+	if (isFocusModeEnabled) {
+		const FocusModeOptions& focusModeOptions = Storage::getInstance().getAddonOptions().focusModeOptions;
+		bool isFocusModeActive = !gpio_get(focusModeOptions.pin);
+		if (focusModePrevState != isFocusModeActive) {
+			focusModePrevState = isFocusModeActive;
+			if (isFocusModeActive) {
+				setDisplayPower(0);
+			} else {
+				setDisplayPower(1);
+			}
+		}
+	}
+
 	prevMillis = getMillis();
 
-	return (!!displaySaverTimeout && displaySaverTimer <= 0);
+		return (isFocusModeEnabled && focusModePrevState) || (!!displaySaverTimeout && displaySaverTimer <= 0);
 }
 
 void I2CDisplayAddon::setDisplayPower(uint8_t status)
